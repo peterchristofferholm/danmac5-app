@@ -3,58 +3,72 @@ from dash import Dash, html, dcc, Input, Output
 from dash.dash_table import DataTable
 
 import os
-import pandas as pd
+import re
 
-import psycopg2
-from psycopg2.pool import ThreadedConnectionPool
-from psycopg2 import sql
-from psycopg2.extras import RealDictCursor
+from src.backend import Danmac5DB
+
+###############################################################################
+
+# connect to sqlite3 database
+db = Danmac5DB("data/danmac5.db")
 
 app = Dash(__name__)
 
-pool = ThreadedConnectionPool(minconn=5, maxconn=20)
-
-con = psycopg2.connect()
-cur = con.cursor(
-    cursor_factory=RealDictCursor, name=f"py-{os.getpid()}", scrollable=True
-)
-cur.itersize = 200
-
-PAGE_SIZE = 10
-
 app.layout = html.Div([
+    html.H1("DanMAC5"),
     html.Div([
-        html.Label("Population"),
-        dcc.RadioItems(
-            ["all", "female", "male"], "all", id="btn-1"
-        )
-    ], style={"padding" : 10, "flex" : 1}),
+        # search bar
+        dcc.Input(
+            id="searchbar",
+            debounce=True,
+            pattern="^(chr(\d{1,2}|[XY]):\d+-\d+|(rs(\d+)[;, ])*(rs\d+))$",
+            placeholder="region (chr1:1002-10023) or rsIDs (rs13;rs345)",
+            spellCheck="false",
+            size="40"),
+
+        # select male/female
+        dcc.Checklist(
+            id="strata",
+            options={"male" : "♂", "female" : "♀"},
+            value=["male", "female"])
+
+        ], style={
+            "padding" : 20, "gap" : 20, "display" : "flex"
+        }
+    ),
     html.Br(),
     DataTable(
-        id="datatable", page_current=0, page_size=PAGE_SIZE, page_action="custom"
+        id="datatable",
+        page_action="native",
+        page_current=0,
+        page_size=10
     )
 ])
 
 
 @app.callback(
     Output("datatable", "data"),
-    Input("btn-1", "value"),
-    Input("datatable", "page_current"),
-    Input("datatable", "page_size")
+    Input("searchbar", "value"),
+    Input("strata", "value")
 )
-def update_table(population, page_current, page_size):
+def update_table(search_string, strata):
 
-    ctx = dash.callback_context
+    strata = ["all"] + strata
 
-    if not ctx.triggered or ctx.triggered[0]["prop_id"] == "btn-1.value":
-        cur.execute(sql.SQL("""
-	    select chromosome, pos, ref, alt, info from {tbl}
-	    """).format(
-		tbl=sql.Identifier(f"sumstats_{population}")
-	))
+    if not search_string:
+        search_string = "chr1:1-10500"
 
-    cur.scroll(page_current*page_size, mode="absolute")
-    return cur.fetchmany(page_size)
+    if search_string.startswith("rs"):
+        rsids = re.split("[;, ]+", search_string)
+        data = db.search_rsid(strata, rsids)
+
+    if search_string.startswith("chr"):
+        query = re.search("^(chr(?:[XY]|\d+)):(\d+)-(\d+)$", search_string)
+        chromosome = query.group(1)
+        position = (int(query.group(2)), int(query.group(3)))
+        data = db.search_pos(strata, chromosome, position)
+
+    return data
 
 
 if __name__ == '__main__':
