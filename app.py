@@ -15,7 +15,11 @@ db = Danmac5DB("data/danmac5.db")
 app = Dash(__name__)
 
 app.layout = html.Div([
-    html.H1("DanMAC5"),
+    html.Div([
+        html.Img(src="assets/logo.png", style={
+            "width" : "30%", "max-width" :  "300px"})
+        ], style={"display": "flex", "justify-content" : "center"}),
+
     html.Div([
         # search bar
         dcc.Input(
@@ -41,7 +45,8 @@ app.layout = html.Div([
         id="datatable",
         page_action="native",
         page_current=0,
-        page_size=10
+        page_size=10,
+        cell_selectable=False
     )
 ])
 

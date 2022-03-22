@@ -1,0 +1,41 @@
+
+.dash-table-container 
+.dash-spreadsheet-container 
+.dash-spreadsheet-inner th {
+	background-color: #964b4b;
+    color: white
+}
+
+.dash-table-container 
+.dash-spreadsheet-container 
+.dash-spreadsheet-inner th {
+	border-left: none !important;
+	border-right: none !important;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.dash-table-container 
+.dash-spreadsheet-container 
+.dash-spreadsheet-inner td {
+	border-left: none !important;
+	border-right: none !important;
+    font-family: 'Fira Code', monospace
+}
+
+.dash-table-container 
+.dash-spreadsheet-container 
+.dash-spreadsheet-inner table {
+    border: 1px solid rgb(211, 211, 211) !important;
+}
+
+.dash-table-container 
+.dash-spreadsheet-container 
+.dash-spreadsheet-inner tr:nth-child(even) td{
+    background-color: #fafafa;
+}
+
+.dash-table-container 
+.dash-spreadsheet-container 
+.dash-spreadsheet-inner tr:hover  td{
+    background-color: #eeeeee;
+}
