@@ -13,14 +13,14 @@ from src.formatter import formatter
 ###############################################################################
 
 # connect to sqlite3 database
-db = Danmac5DB("data/danmac5.db")
+db = Danmac5DB("assets/data/danmac5.db")
 
 # cached storage for current session
 storage = dcc.Store(id="storage")
 
 # initalize app
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
-
+server = app.server
 
 ###############################################################################
 # navbar, search, logo
@@ -122,4 +122,4 @@ app.layout = dbc.Container([
 ])
 
 if __name__ == "__main__":
-    app.run_server(host="0.0.0.0", port=80)
+    app.run_server(debug=True, port=80, host="0.0.0.0")
