@@ -1,9 +1,17 @@
+:root {
+    --primary: #964b4b;
+}
 
 .dash-table-container 
 .dash-spreadsheet-container 
 .dash-spreadsheet-inner th {
-	background-color: #964b4b !important;
+	background-color: var(--primary) !important;
     color: white
+}
+
+.btn, .btn-primary button {
+	background-color: var(--primary) !important;
+	border-color: var(--primary) !important;
 }
 
 .dash-table-container 
