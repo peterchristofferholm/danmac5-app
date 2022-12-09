@@ -2,7 +2,12 @@ def _format(row):
     _row = {}
     _row["variant_id"] = "-".join((
         str(row.pop(k)) for k in ("chrom", "pos", "ref", "alt")))
-    _row["rsid"] = row["id"] if row["id"] else "-"
+
+    if (rsid := row["id"]):
+        _row["rsid"] = f"[{rsid}](https://www.ncbi.nlm.nih.gov/snp/{rsid})"
+    else:
+        _row["rsid"] = "&mdash;"
+
     _row["all"] = row["all"]
     _row["female"] = row["female"]
     _row["male"] = row["male"]

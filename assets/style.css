@@ -27,7 +27,14 @@
 .dash-spreadsheet-inner td {
 	border-left: none !important;
 	border-right: none !important;
-    font-family: 'Fira Code', monospace
+    font-family: 'Fira Code', monospace;
+}
+
+.dash-table-container 
+.dash-spreadsheet-container 
+.dash-spreadsheet-inner td 
+div.dash-cell-value.cell-markdown {
+    font-family: 'Fira Code', monospace;
 }
 
 .dash-table-container 
@@ -47,3 +54,8 @@
 .dash-spreadsheet-inner tr:hover  td{
     background-color: #eeeeee;
 }
+
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }

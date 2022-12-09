@@ -98,6 +98,15 @@ datatable = dbc.Row(
             page_action="native", page_current=0, page_size=15,
             cell_selectable=False,
 
+            columns=[
+                {"id" : "variant_id", "name" : "variant_id"},
+                {"id" : "rsid", "name" : "rsid", "presentation" : "markdown"},
+                {"id" : "all", "name" : "all"},
+                {"id" : "female", "name" : "female"},
+                {"id" : "male", "name" : "male"}
+            ],
+
+
             style_cell={
                 "textAlign" : "left",
             },
@@ -107,7 +116,9 @@ datatable = dbc.Row(
                     "width" : "35%", "minWidth" : "35%", "maxWidth" : 0,
                     "textOverflow" : "ellipsis", "overflow" : "hidden",
                 }
-            ]
+            ],
+            css=[{"selector" : "p", "rule" : "margin : 0"}]
+
         )
     ],
     className="px-2 pt-3"
@@ -122,4 +133,5 @@ app.layout = dbc.Container([
 ])
 
 if __name__ == "__main__":
-    app.run_server(debug=True, port=80, host="0.0.0.0")
+    # app.run_server(debug=True, port=80, host="0.0.0.0")
+    app.run_server(debug=True)
