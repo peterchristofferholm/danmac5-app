@@ -20,6 +20,7 @@ storage = dcc.Store(id="storage")
 
 # initalize app
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app.title = "DanMAC5"
 server = app.server
 
 ###############################################################################
@@ -133,5 +134,5 @@ app.layout = dbc.Container([
 ])
 
 if __name__ == "__main__":
-    app.run_server(debug=False, port=80, host="0.0.0.0")
-    #app.run_server(debug=True)
+    # app.run_server(debug=False, port=80, host="0.0.0.0")
+    app.run_server(debug=True)
