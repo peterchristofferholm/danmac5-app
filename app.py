@@ -99,7 +99,7 @@ datatable = dbc.Row(
             cell_selectable=False,
 
             columns=[
-                {"id" : "variant_id", "name" : "variant_id"},
+                {"id" : "variant_id", "name" : "variant"},
                 {"id" : "rsid", "name" : "rsid", "presentation" : "markdown"},
                 {"id" : "all", "name" : "all"},
                 {"id" : "female", "name" : "female"},
