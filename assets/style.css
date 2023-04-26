@@ -2,60 +2,67 @@
     --primary: #964b4b;
 }
 
-.dash-table-container 
-.dash-spreadsheet-container 
-.dash-spreadsheet-inner th {
-	background-color: var(--primary) !important;
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th {
+    background-color: var(--primary) !important;
     color: white
 }
 
-.btn, .btn-primary button {
-	background-color: var(--primary) !important;
-	border-color: var(--primary) !important;
+.btn,
+.btn-primary button {
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
 }
 
-.dash-table-container 
-.dash-spreadsheet-container 
-.dash-spreadsheet-inner th {
-	border-left: none !important;
-	border-right: none !important;
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th {
+    border-left: none !important;
+    border-right: none !important;
     font-family: 'Open Sans', sans-serif;
 }
 
-.dash-table-container 
-.dash-spreadsheet-container 
-.dash-spreadsheet-inner td {
-	border-left: none !important;
-	border-right: none !important;
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner td {
+    border-left: none !important;
+    border-right: none !important;
     font-family: 'Fira Code', monospace;
 }
 
-.dash-table-container 
-.dash-spreadsheet-container 
-.dash-spreadsheet-inner td 
-div.dash-cell-value.cell-markdown {
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner td div.dash-cell-value.cell-markdown {
     font-family: 'Fira Code', monospace;
 }
 
-.dash-table-container 
-.dash-spreadsheet-container 
-.dash-spreadsheet-inner table {
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner table {
     border: 1px solid rgb(211, 211, 211) !important;
 }
 
-.dash-table-container 
-.dash-spreadsheet-container 
-.dash-spreadsheet-inner tr:nth-child(even) td{
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner tr:nth-child(even) td {
     background-color: #fafafa;
 }
 
-.dash-table-container 
-.dash-spreadsheet-container 
-.dash-spreadsheet-inner tr:hover  td{
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner tr:hover td {
     background-color: #eeeeee;
 }
 
-a:link { text-decoration: none; }
-a:visited { text-decoration: none; }
-a:hover { text-decoration: none; }
-a:active { text-decoration: none; }
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+
+.cell--selected.focused {
+    background-color: inherit !important;
+    border-color: inherit !important;
+}
+
+.dash-cell {
+    border-color: inherit !important;
+}
