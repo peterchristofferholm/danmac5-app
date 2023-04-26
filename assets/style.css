@@ -1,17 +1,47 @@
 :root {
-    --primary: #964b4b;
+    --bs-primary: #964b4b;
 }
 
-.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th {
-    background-color: var(--primary) !important;
-    color: white
+
+/**************************************************************************************/
+tr,
+th,
+td,
+table {
+    border: none !important;
 }
 
-.btn,
-.btn-primary button {
-    background-color: var(--primary) !important;
-    border-color: var(--primary) !important;
+/**************************************************************************************/
+
+.navbar {
+    border: none;
 }
+
+/**************************************************************************************/
+
+.btn-primary {
+    --bs-btn-bg: var(--bs-primary) !important;
+    --bs-btn-border-color: var(--bs-primary) !important;
+    --bs-btn-hover-bg: var(--bs-primary) !important;
+    --bs-btn-active-bg: var(--bs-primary) !important;
+    --bs-btn-disabled-bg: var(--bs-primary) !important;
+}
+
+.btn-primary,
+.btn-primary:hover {
+    background-image: linear-gradient(0deg, #000 -300%, var(--bs-primary));
+    filter: none;
+    border: 1px solid #dedede;
+}
+
+.btn-secondary,
+.btn-secondary:hover {
+    background-image: linear-gradient(0deg, #000 -300%, var(--bs-secondary));
+    /* filter: none; */
+    border: 1px solid #dedede;
+}
+
+/**************************************************************************************/
 
 .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th {
     border-left: none !important;
@@ -25,13 +55,59 @@
     font-family: 'Fira Code', monospace;
 }
 
+/**************************************************************************************/
+
+.dash-table-container {
+    border-collapse: separate !important;
+    border: none !important;
+}
+
+.dash-cell {
+    border-color: inherit !important;
+    cursor: pointer;
+}
+
+.dash-header {
+    background-image: linear-gradient(0deg, #000 -300%, var(--bs-primary));
+    background-color: var(--bs-primary) !important;
+    border: 1px solid #dedede;
+    color: var(--bs-white);
+}
+
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner tr:nth-child(even) td {
+    background-color: hsl(0, 0%, 95%) !important;
+}
+
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner tr:nth-child(odd) td {
+    background-color: var(--bs-white) !important;
+}
+
+tr:hover {
+    border: 1px solid var(--bs-gray-400) !important;
+}
+
+/**************************************************************************************/
+
+/*
+:root {
+    --primary: #964b4b;
+    --bs-btn-bg: var(--primary);
+}
+
+.cell--selected.focused {
+    background-color: initial !important;
+    border-color: inherit !important;
+}
+
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th {
+    background-color: var(--primary) !important;
+    color: white
+}
+
 .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner td div.dash-cell-value.cell-markdown {
     font-family: 'Fira Code', monospace;
 }
 
-.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner table {
-    border: 1px solid rgb(211, 211, 211) !important;
-}
 
 .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner tr:nth-child(even) td {
     background-color: #fafafa;
@@ -40,29 +116,4 @@
 .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner tr:hover td {
     background-color: #eeeeee;
 }
-
-a:link {
-    text-decoration: none;
-}
-
-a:visited {
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-a:active {
-    text-decoration: none;
-}
-
-
-.cell--selected.focused {
-    background-color: inherit !important;
-    border-color: inherit !important;
-}
-
-.dash-cell {
-    border-color: inherit !important;
-}
+*/
